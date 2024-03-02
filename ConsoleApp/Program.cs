@@ -8,6 +8,7 @@ namespace CP1_ConsoleApp
     {
         static void Main(string[] args)
         {
+            // Iniciando as listas de cadastros vazias
             List<Aluno> listaAlunos = new List<Aluno>();
             List<Professor> listaProfessores = new List<Professor>();
             List<Coordenador> listaCoordenadores = new List<Coordenador>();
@@ -17,6 +18,7 @@ namespace CP1_ConsoleApp
 
             while (true)
             {
+                //Exibindo as opções ao usuário
                 Console.WriteLine("Que tipo de usuário deseja cadastrar?");
                 Console.WriteLine("1 - Aluno");
                 Console.WriteLine("2 - Professor");
@@ -29,6 +31,7 @@ namespace CP1_ConsoleApp
 
                 if (opcao == 6) break;
 
+                //Chama a função condizente com o que a seleção do usuário
                 switch (opcao)
                 {
                     case 1:
@@ -48,19 +51,17 @@ namespace CP1_ConsoleApp
                         break;
 
                     case 5:
-                        ExibirUsuariosCadastrados(listaAlunos, listaProfessores, listaCoordenadores, listaFuncionarios);
+                        ExibirUsuarios(listaAlunos, listaProfessores, listaCoordenadores, listaFuncionarios);
                         break;
-
-                  
 
                 }
             }
         }
 
+        //Pede as informações do aluno, adiciona na lista e dá um feedback ao usuário
         private static void CadastrarAluno(List<Aluno> listaAlunos)
         {
             Console.WriteLine("Iniciando cadastro de um novo aluno");
-
             Console.WriteLine("Digite o nome do aluno:");
             string nome = Console.ReadLine();
 
@@ -75,6 +76,8 @@ namespace CP1_ConsoleApp
             Console.WriteLine($"Aluno {nome} cadastrado com sucesso!");
         }
 
+        // Pede as informações do professor, cadastra cada disciplina dele,
+        // adiciona o professor na lista e dá um feedback ao usuário
         private static void CadastrarProfessor(List<Professor> listaProfessores)
         {
             Console.WriteLine("Iniciando cadastro de um novo professor");
@@ -106,6 +109,8 @@ namespace CP1_ConsoleApp
             Console.WriteLine($"Professor {nome} cadastrado com sucesso!");
         }
 
+        // Pede as informações do coordenador, cadastra cada curso dele,
+        // adiciona o coordenador na lista e dá um feedback ao usuário
         private static void CadastrarCoordenador(List<Coordenador> listaCoordenadores)
         {
             Console.WriteLine("Iniciando cadastro de um novo coordenador");
@@ -136,6 +141,8 @@ namespace CP1_ConsoleApp
             listaCoordenadores.Add(coordenador);
             Console.WriteLine($"Coordenador {nome} cadastrado com sucesso!");
         }
+
+        // Pede as informações do funcionário, adiciona o funcionário na lista e dá um feedback ao usuário
         private static void CadastrarFuncionario(List<Funcionario> listaFuncionarios)
         {
             Console.WriteLine("Iniciando cadastro de um novo funcionário");
@@ -158,7 +165,14 @@ namespace CP1_ConsoleApp
         }
 
 
-        private static void ExibirUsuariosCadastrados(List<Aluno> listaAlunos, List<Professor> listaProfessores, List<Coordenador> listaCoordenadores, List<Funcionario> listaFuncionarios)
+        // Verifica se cada lista criada tem pelo menos algum item cadastrado e 
+        // caso tenha, ele mostra a lista de cada tipo de usuário: aluno, professor, coordenador e funcionário
+        private static void ExibirUsuarios(
+            List<Aluno> listaAlunos, 
+            List<Professor> listaProfessores, 
+            List<Coordenador> listaCoordenadores, 
+            List<Funcionario> listaFuncionarios
+        )
         {
             Console.WriteLine("Exibindo todos os usuários cadastrados");
 
